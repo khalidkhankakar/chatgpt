@@ -6,6 +6,8 @@ import { ChevronDown, EllipsisVertical, Share, User } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
+import { Sidebar } from "./sidebar";
+
 function Navbar() {
   const isLoggedIn = true;
   return (
@@ -26,9 +28,7 @@ function Navbar() {
 
       <div className="hidden lg:flex  items-center gap-2">
         {isLoggedIn && (
-          <Button className="flex items-center justify-center border-transparent shadow-none" variant="outline">
-            <HugeiconsIcon size={50} className="size-5" icon={SidebarLeftIcon} />
-          </Button>
+          <Sidebar />
         )}
         <Button className=" flex items-center justify-center border-transparent shadow-none" variant="outline">
           <HugeiconsIcon size={50} className="size-5" icon={PencilEdit02Icon} />
