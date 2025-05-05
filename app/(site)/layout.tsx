@@ -12,7 +12,7 @@ export default function SiteLayout({
     >
       <Navbar />
 
-      <main>
+      <main className="h-[calc(100vh-64px)] p-5">
 
         {children}
       </main>

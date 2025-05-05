@@ -1,31 +1,15 @@
-"use client";
+import { ChatInput } from "@/components/shared/chat-input";
+import { Suggestions } from "@/components/shared/suggestions";
+import { cn } from "@/lib/utils";
 
-import { useChat } from "@ai-sdk/react";
-
-export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
+export default function page() {
+  const preious_chat = false;
   return (
-    <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
-      {messages.map(message => (
-        <div key={message.id} className="whitespace-pre-wrap">
-          {message.role === "user" ? "User: " : "AI: "}
-          {message.parts.map((part, i) => {
-            switch (part.type) {
-              case "text":
-                return <div key={`${message.id}-${i}`}>{part.text}</div>;
-            }
-          })}
-        </div>
-      ))}
+    <div className={cn("flex flex-col gap-4 justify-center t  h-full w-full border-2 border-red-400", preious_chat ? "items-end" : "items-center")}>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          className="fixed dark:bg-zinc-900 bottom-0 w-full max-w-md p-2 mb-8 border border-zinc-300 dark:border-zinc-800 rounded shadow-xl"
-          value={input}
-          placeholder="Say something..."
-          onChange={handleInputChange}
-        />
-      </form>
+      {!preious_chat && <h3 className="font-bold text-5xl md:text-3xl">How I can help you today!</h3> }
+      <ChatInput className="" />
+      <Suggestions />
     </div>
   );
 }
